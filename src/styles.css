@@ -1,0 +1,195 @@
+/* ===== Tokens (medidos a partir das referências) ===== */
+:root {
+  --magenta: #a3316a;
+  --magenta-deep: #8c2a5b;
+  --plum: #6f2b4f;
+  --pink: #ec6fa5;
+  --pink-hover: #e25d97;
+  --pink-soft: #ef86b5;
+  --blush: #fdf0f5;
+  --card: #fefafb;
+  --line: #f1dde6;
+  --gold: #e3c16a;
+  --text: #7d6873;
+  --text-soft: #9a8890;
+  --white: #ffffff;
+
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --radius: 4px;
+  --header-h: 7rem;
+  --container: 76rem;
+  --container-wide: 92.5rem;
+  --shadow-card: 0 10px 30px rgb(163 49 106 / 0.06);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 3px;
+}
+
+.container {
+  inline-size: min(100% - 3rem, var(--container));
+  margin-inline: auto;
+}
+
+.container.wide {
+  inline-size: min(100% - 3rem, var(--container-wide));
+}
+
+/* ===== Tipografia compartilhada ===== */
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--pink);
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.05rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: var(--magenta);
+}
+
+.caps {
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* ===== Botões ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0 1.75rem;
+  min-block-size: 3rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn app-icon {
+  transition: transform 0.25s var(--ease);
+}
+
+.btn:hover app-icon {
+  transform: translateX(3px);
+}
+
+.btn-primary {
+  background: var(--pink);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--pink-hover);
+}
+
+.btn-outline {
+  background: var(--white);
+  border-color: #f3cfdf;
+  color: var(--magenta);
+}
+
+.btn-outline:hover {
+  border-color: var(--pink);
+}
+
+.btn-light {
+  background: var(--white);
+  color: var(--magenta);
+}
+
+.btn-light:hover {
+  background: var(--blush);
+}
+
+.sr-only {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: precisa vencer as animações dos componentes */
+    animation-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: precisa vencer as transições dos componentes */
+    transition-duration: 0.01ms !important;
+  }
+}

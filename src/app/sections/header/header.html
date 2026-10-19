@@ -1,0 +1,39 @@
+<div class="bar container wide">
+  <app-logo [compact]="scrolled()" />
+
+  <nav id="menu-principal" class="nav" aria-label="Menu principal">
+    <ul>
+      @for (link of links; track link.href) {
+      <li>
+        <!-- biome-ignore lint/a11y/useValidAnchor: o href vem da ligação [href] do Angular -->
+        <a [href]="link.href" (click)="closeMenu()">{{ link.label }}</a>
+      </li>
+      }
+    </ul>
+    <a class="btn btn-primary nav-cta" href="#colecao" (click)="closeMenu()">
+      Explorar perfumes
+      <app-icon name="arrow-right" [size]="15" />
+    </a>
+  </nav>
+
+  <div class="actions">
+    <a class="bag" href="#colecao" aria-label="Sacola de compras">
+      <app-icon name="bag" [size]="22" [stroke]="1.5" />
+    </a>
+    <a class="btn btn-primary cta" href="#colecao">
+      Explorar perfumes
+      <app-icon name="arrow-right" [size]="15" />
+    </a>
+    <button
+      type="button"
+      class="burger"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="menu-principal"
+      (click)="toggleMenu()"
+    >
+      <span class="sr-only">{{ menuOpen() ? 'Fechar menu' : 'Abrir menu' }}</span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+    </button>
+  </div>
+</div>

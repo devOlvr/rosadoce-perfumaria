@@ -1,0 +1,43 @@
+@let p = product();
+<div class="backdrop" (click)="onBackdropClick($event)">
+  <div
+    class="dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+    aria-describedby="modal-desc"
+  >
+    <button
+      #closeButton
+      type="button"
+      class="close"
+      aria-label="Fechar detalhes"
+      (click)="closed.emit()"
+    >
+      <app-icon name="close" [size]="16" [stroke]="1.5" />
+    </button>
+
+    <div class="media">
+      <!-- biome-ignore lint/a11y/useAltText: o alt vem da ligação [alt] do Angular -->
+      <img [src]="p.image" [alt]="'Frasco do perfume ' + p.name" width="340" height="340">
+    </div>
+
+    <div class="info">
+      <p class="eyebrow">Coleção Rosa Doce</p>
+      <h2 id="modal-title" class="name">{{ p.name }}</h2>
+      <p class="type">{{ p.type }}</p>
+      <p id="modal-desc" class="desc">{{ p.description }}</p>
+
+      <hr>
+
+      <p class="label">Notas olfativas</p>
+      <p class="notes">
+        @for (note of p.notes; track note; let last = $last) { {{ note }} @if (!last) {
+        <span class="dot" aria-hidden="true">•</span>
+        } }
+      </p>
+
+      <p class="price">{{ p.price | currency: 'BRL' : 'symbol' : '1.2-2' }}</p>
+    </div>
+  </div>
+</div>
