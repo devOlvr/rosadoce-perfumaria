@@ -1,0 +1,20 @@
+<section id="colecao" class="colecao">
+  <div class="container">
+    <div class="cabecalho-secao">
+      <p class="subtitulo">Nossa coleção</p>
+      <h2 class="titulo-secao">Encontre sua fragrância perfeita</h2>
+      <p>Uma seleção especial para realçar sua personalidade em cada momento.</p>
+    </div>
+
+    <div class="grade">
+      @for (produto of produtos; track produto.id) {
+      <app-product-card [produto]="produto" (verDetalhes)="abrirDetalhes($event)" />
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Modal de detalhes: só aparece quando tem um produto selecionado -->
+@if (produtoSelecionado) {
+<app-product-modal [produto]="produtoSelecionado" (fechar)="fecharDetalhes()" />
+}

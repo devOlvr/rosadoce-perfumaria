@@ -1,0 +1,271 @@
+/* ==========================================
+   Estilos globais - Rosa Doce Perfumaria
+   ========================================== */
+
+// Paleta de cores do projeto
+:root {
+  --magenta: #a3316a;
+  --magenta-escuro: #8c2a5b;
+  --roxo: #6f2b4f;
+  --rosa: #ec6fa5;
+  --rosa-hover: #e25d97;
+  --rosa-claro: #fdf0f5;
+  --borda: #f1dde6;
+  --dourado: #e3c16a;
+  --texto: #5e4a55;
+  --texto-claro: #8f7c86;
+  --branco: #ffffff;
+  --erro: #c13a62;
+  --sucesso: #2e8b57;
+
+  --fonte: "Montserrat", Arial, sans-serif;
+  --raio: 8px;
+  --sombra: 0 4px 16px rgba(163, 49, 106, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--texto);
+  background: var(--branco);
+}
+
+// Classe usada quando um modal está aberto, para a página não rolar atrás dele
+body.sem-scroll {
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- Títulos ---------- */
+.subtitulo {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--rosa);
+}
+
+.titulo-secao {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--magenta);
+}
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 2px solid transparent;
+  border-radius: var(--raio);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.btn-primario {
+  background: var(--rosa);
+  color: var(--branco);
+
+  &:hover {
+    background: var(--rosa-hover);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-secundario {
+  background: var(--branco);
+  border-color: var(--rosa);
+  color: var(--magenta);
+
+  &:hover {
+    background: var(--rosa-claro);
+  }
+}
+
+.btn-branco {
+  background: var(--branco);
+  color: var(--magenta);
+
+  &:hover {
+    background: var(--rosa-claro);
+  }
+}
+
+/* ---------- Formulários (login e cadastro) ---------- */
+.pagina-form {
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+  background: var(--rosa-claro);
+}
+
+.card-form {
+  width: 100%;
+  max-width: 420px;
+  padding: 36px 32px;
+  border-radius: var(--raio);
+  background: var(--branco);
+  box-shadow: var(--sombra);
+
+  h1 {
+    font-size: 28px;
+    color: var(--magenta);
+    text-align: center;
+  }
+
+  .descricao {
+    margin-top: 6px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    text-align: center;
+    color: var(--texto-claro);
+  }
+}
+
+.campo {
+  margin-bottom: 16px;
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--roxo);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #dcc3cf;
+    border-radius: var(--raio);
+    font: inherit;
+    font-size: 15px;
+
+    &:focus {
+      border-color: var(--rosa);
+      outline: 2px solid rgba(236, 111, 165, 0.25);
+    }
+
+    &.invalido {
+      border-color: var(--erro);
+    }
+  }
+}
+
+// Campo de senha com o botão de "olho" dentro
+// (fica depois de .campo para o padding da direita ganhar)
+.campo .campo-senha {
+  position: relative;
+
+  input {
+    padding-right: 48px;
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    color: var(--texto-claro);
+
+    &:hover {
+      color: var(--magenta);
+    }
+  }
+}
+
+.msg-erro {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--erro);
+}
+
+.msg-dica {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--texto-claro);
+}
+
+.alerta-erro {
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  border-radius: var(--raio);
+  background: #fdecf0;
+  font-size: 14px;
+  color: var(--erro);
+}
+
+.link-form {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+
+  a {
+    font-weight: 600;
+    color: var(--magenta);
+  }
+}
+
+/* ---------- Acessibilidade ---------- */
+// Esconde o texto na tela mas deixa ele para leitores de tela
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

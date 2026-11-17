@@ -1,0 +1,31 @@
+.colecao {
+  padding: 70px 0;
+}
+
+.cabecalho-secao {
+  margin-bottom: 40px;
+  text-align: center;
+
+  .titulo-secao {
+    margin: 8px 0;
+  }
+}
+
+// 3 colunas no computador, 2 no tablet e 1 no celular
+.grade {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 900px) {
+  .grade {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grade {
+    grid-template-columns: 1fr;
+  }
+}

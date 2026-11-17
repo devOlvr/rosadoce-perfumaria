@@ -50,6 +50,21 @@
       }
     }
   },
+  "overrides": [
+    {
+      "includes": ["**/*.html"],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "useValidAnchor": "off",
+            "useAltText": "off",
+            "noSvgWithoutTitle": "off",
+            "useAriaPropsSupportedByRole": "off"
+          }
+        }
+      }
+    }
+  ],
   "assist": {
     "enabled": true,
     "actions": {

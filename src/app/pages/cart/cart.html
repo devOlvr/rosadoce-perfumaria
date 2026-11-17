@@ -1,0 +1,106 @@
+<section class="container pagina-carrinho">
+  <h1 class="titulo-secao">Meu carrinho</h1>
+
+  @if (carrinho.itens().length === 0) {
+  <!-- Carrinho vazio -->
+  <div class="vazio">
+    <app-icon name="bag" [size]="48" [stroke]="1.2" />
+    <h2>Seu carrinho está vazio</h2>
+    <p>Que tal dar uma olhada na nossa coleção?</p>
+    <a class="btn btn-primario" routerLink="/" fragment="colecao">Ver perfumes</a>
+  </div>
+  } @else {
+  <div class="conteudo">
+    <!-- Tabela com os produtos -->
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Preço</th>
+          <th>Quantidade</th>
+          <th>Subtotal</th>
+          <th><span class="sr-only">Remover</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of carrinho.itens(); track item.produto.id) {
+        <tr>
+          <td>
+            <div class="produto">
+              <img [src]="item.produto.imagem" [alt]="item.produto.nome" width="70" height="70">
+              <div>
+                <strong>{{ item.produto.nome }}</strong>
+                <small>{{ item.produto.tipo }}</small>
+              </div>
+            </div>
+          </td>
+          <td data-label="Preço">{{ item.produto.preco | currency: 'BRL' }}</td>
+          <td data-label="Quantidade">
+            <div class="quantidade">
+              <button type="button" (click)="carrinho.diminuir(item)" title="Diminuir">−</button>
+              <span>{{ item.quantidade }}</span>
+              <button type="button" (click)="carrinho.aumentar(item)" title="Aumentar">+</button>
+            </div>
+          </td>
+          <td data-label="Subtotal" class="subtotal">
+            {{ item.produto.preco * item.quantidade | currency: 'BRL' }}
+          </td>
+          <td>
+            <button
+              type="button"
+              class="remover"
+              title="Remover do carrinho"
+              (click)="carrinho.remover(item)"
+            >
+              <app-icon name="trash" [size]="20" />
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+
+    <!-- Resumo do pedido -->
+    <aside class="resumo">
+      <h2>Resumo do pedido</h2>
+
+      <div class="linha">
+        <span>Subtotal</span>
+        <span>{{ carrinho.subtotal() | currency: 'BRL' }}</span>
+      </div>
+      <div class="linha">
+        <span>Frete</span>
+        @if (carrinho.frete() === 0) {
+        <span class="gratis">Grátis</span>
+        } @else {
+        <span>{{ carrinho.frete() | currency: 'BRL' }}</span>
+        }
+      </div>
+
+      @if (carrinho.faltaParaFreteGratis() > 0) {
+      <p class="aviso-frete">
+        Faltam {{ carrinho.faltaParaFreteGratis() | currency: 'BRL' }} para ganhar frete grátis!
+      </p>
+      }
+
+      <div class="linha total">
+        <span>Total</span>
+        <span>{{ carrinho.total() | currency: 'BRL' }}</span>
+      </div>
+
+      <button type="button" class="btn btn-primario" (click)="finalizarCompra()">
+        Finalizar compra
+      </button>
+      <a class="continuar" routerLink="/" fragment="colecao">← Continuar comprando</a>
+    </aside>
+  </div>
+  }
+</section>
+
+@if (pedidoFinalizado) {
+<app-order-confirmation
+  [numero]="numeroPedido"
+  [total]="totalPedido"
+  (fechar)="pedidoFinalizado = false"
+/>
+}

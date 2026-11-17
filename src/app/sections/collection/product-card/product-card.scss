@@ -1,0 +1,85 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  background: var(--branco);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: var(--sombra);
+  }
+}
+
+.foto {
+  position: relative;
+
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+}
+
+.selo {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--branco);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--magenta);
+}
+
+.info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px;
+
+  h3 {
+    font-size: 20px;
+    color: var(--roxo);
+  }
+}
+
+.tipo {
+  font-size: 13px;
+  color: var(--texto-claro);
+}
+
+.descricao {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.preco {
+  margin-top: auto;
+  margin-bottom: 14px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--magenta);
+}
+
+.botoes {
+  display: flex;
+  gap: 10px;
+
+  .btn {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+.no-carrinho {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--sucesso);
+}

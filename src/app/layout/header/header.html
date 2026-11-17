@@ -1,0 +1,40 @@
+<header class="cabecalho">
+  <div class="container barra">
+    <app-logo />
+
+    <!-- Menu principal (no celular vira um menu que abre e fecha) -->
+    <nav class="menu" [class.aberto]="menuAberto">
+      @for (link of links; track link.secao) {
+      <a routerLink="/" [fragment]="link.secao" (click)="fecharMenu()">{{ link.texto }}</a>
+      }
+    </nav>
+
+    <div class="acoes">
+      @if (auth.estaLogado()) {
+      <span class="usuario">
+        <app-icon name="user" [size]="20" />
+        Olá, {{ auth.primeiroNome() }}
+      </span>
+      <button type="button" class="btn-sair" (click)="sair()">Sair</button>
+      } @else {
+      <a class="link-login" routerLink="/login">
+        <app-icon name="user" [size]="20" />
+        Entrar
+      </a>
+      }
+
+      <a class="carrinho" routerLink="/carrinho" title="Carrinho" (click)="fecharMenu()">
+        <app-icon name="bag" [size]="24" />
+        @if (carrinho.quantidadeTotal() > 0) {
+        <span class="contador">{{ carrinho.quantidadeTotal() }}</span>
+        }
+        <span class="sr-only">Carrinho</span>
+      </a>
+
+      <button type="button" class="btn-menu" (click)="abrirFecharMenu()">
+        <span class="sr-only">Abrir menu</span>
+        ☰
+      </button>
+    </div>
+  </div>
+</header>

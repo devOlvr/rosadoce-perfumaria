@@ -1,0 +1,56 @@
+<section class="pagina-form">
+  <div class="card-form">
+    <h1>Entrar</h1>
+    <p class="descricao">Acesse sua conta para finalizar suas compras.</p>
+
+    @if (mensagemErro) {
+    <p class="alerta-erro">{{ mensagemErro }}</p>
+    }
+
+    <form [formGroup]="formulario" (ngSubmit)="entrar()">
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="seuemail@exemplo.com"
+          [class.invalido]="campoInvalido('email')"
+        >
+        @if (campoInvalido('email')) {
+        <p class="msg-erro">Digite um e-mail válido.</p>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <div class="campo-senha">
+          <input
+            id="senha"
+            [type]="mostrarSenha ? 'text' : 'password'"
+            formControlName="senha"
+            placeholder="Sua senha"
+            [class.invalido]="campoInvalido('senha')"
+          >
+          <button
+            type="button"
+            title="Mostrar/ocultar senha"
+            (click)="mostrarSenha = !mostrarSenha"
+          >
+            <app-icon [name]="mostrarSenha ? 'eye-off' : 'eye'" [size]="20" />
+          </button>
+        </div>
+        @if (campoInvalido('senha')) {
+        <p class="msg-erro">Digite sua senha.</p>
+        }
+      </div>
+
+      <button type="submit" class="btn btn-primario botao-enviar">Entrar</button>
+    </form>
+
+    <p class="link-form">
+      Ainda não tem conta?
+      <a routerLink="/cadastro">Cadastre-se</a>
+    </p>
+  </div>
+</section>

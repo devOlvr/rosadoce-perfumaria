@@ -1,0 +1,107 @@
+<section class="pagina-form">
+  <div class="card-form">
+    <h1>Criar conta</h1>
+    <p class="descricao">Preencha seus dados para se cadastrar.</p>
+
+    @if (mensagemErro) {
+    <p class="alerta-erro">{{ mensagemErro }}</p>
+    }
+
+    <form [formGroup]="formulario" (ngSubmit)="cadastrar()">
+      <div class="campo">
+        <label for="nome">Nome completo</label>
+        <input
+          id="nome"
+          type="text"
+          formControlName="nome"
+          placeholder="Seu nome"
+          [class.invalido]="campoInvalido('nome')"
+        >
+        @if (campoInvalido('nome')) {
+        <p class="msg-erro">Digite seu nome (mínimo 3 letras).</p>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="seuemail@exemplo.com"
+          [class.invalido]="campoInvalido('email')"
+        >
+        @if (campoInvalido('email')) {
+        <p class="msg-erro">Digite um e-mail válido.</p>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <div class="campo-senha">
+          <input
+            id="senha"
+            [type]="mostrarSenha ? 'text' : 'password'"
+            formControlName="senha"
+            placeholder="Crie uma senha"
+            [class.invalido]="campoInvalido('senha')"
+          >
+          <button
+            type="button"
+            title="Mostrar/ocultar senha"
+            (click)="mostrarSenha = !mostrarSenha"
+          >
+            <app-icon [name]="mostrarSenha ? 'eye-off' : 'eye'" [size]="20" />
+          </button>
+        </div>
+        @if (campoInvalido('senha')) {
+        <p class="msg-erro">A senha precisa ter pelo menos 6 caracteres.</p>
+        } @else {
+        <p class="msg-dica">Mínimo de 6 caracteres.</p>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="confirmarSenha">Confirmar senha</label>
+        <div class="campo-senha">
+          <input
+            id="confirmarSenha"
+            [type]="mostrarConfirmacao ? 'text' : 'password'"
+            formControlName="confirmarSenha"
+            placeholder="Repita a senha"
+            [class.invalido]="campoInvalido('confirmarSenha') || senhasDiferentes()"
+          >
+          <button
+            type="button"
+            title="Mostrar/ocultar senha"
+            (click)="mostrarConfirmacao = !mostrarConfirmacao"
+          >
+            <app-icon [name]="mostrarConfirmacao ? 'eye-off' : 'eye'" [size]="20" />
+          </button>
+        </div>
+        @if (senhasDiferentes()) {
+        <p class="msg-erro">As senhas não são iguais.</p>
+        } @else if (campoInvalido('confirmarSenha')) {
+        <p class="msg-erro">Repita a senha.</p>
+        }
+      </div>
+
+      <div class="campo">
+        <label class="termos">
+          <input type="checkbox" formControlName="aceitoTermos">
+          Li e aceito os termos de uso
+        </label>
+        @if (campoInvalido('aceitoTermos')) {
+        <p class="msg-erro">Você precisa aceitar os termos.</p>
+        }
+      </div>
+
+      <button type="submit" class="btn btn-primario botao-enviar">Cadastrar</button>
+    </form>
+
+    <p class="link-form">
+      Já tem conta?
+      <a routerLink="/login">Entrar</a>
+    </p>
+  </div>
+</section>

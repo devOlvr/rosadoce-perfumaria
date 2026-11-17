@@ -1,0 +1,42 @@
+<div class="fundo" (click)="clicouNoFundo($event)">
+  <div class="modal" role="dialog" aria-modal="true" [attr.aria-label]="produto().nome">
+    <button type="button" class="fechar" title="Fechar" (click)="fechar.emit()">
+      <app-icon name="close" [size]="20" />
+    </button>
+
+    <img [src]="produto().imagem" [alt]="produto().nome" width="340" height="340">
+
+    <div class="info">
+      <p class="subtitulo">{{ produto().tipo }}</p>
+      <h2>{{ produto().nome }}</h2>
+      <p class="descricao">{{ produto().descricao }}</p>
+
+      <p><strong>Notas olfativas:</strong> {{ produto().notas.join(', ') }}</p>
+
+      <p class="preco">{{ produto().preco | currency: 'BRL' }}</p>
+
+      @if (!adicionado) {
+      <div class="comprar">
+        <div class="quantidade">
+          <button type="button" (click)="diminuir()" title="Diminuir">−</button>
+          <span>{{ quantidade }}</span>
+          <button type="button" (click)="aumentar()" title="Aumentar">+</button>
+        </div>
+        <button type="button" class="btn btn-primario" (click)="adicionarAoCarrinho()">
+          Adicionar ao carrinho
+        </button>
+      </div>
+      } @else {
+      <p class="sucesso">✔ Produto adicionado ao carrinho!</p>
+      <div class="comprar">
+        <button type="button" class="btn btn-secundario" (click)="fechar.emit()">
+          Continuar comprando
+        </button>
+        <a class="btn btn-primario" routerLink="/carrinho" (click)="fechar.emit()">
+          Ir para o carrinho
+        </a>
+      </div>
+      }
+    </div>
+  </div>
+</div>

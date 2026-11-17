@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="foto">
+    <img [src]="produto().imagem" [alt]="produto().nome" width="340" height="340" loading="lazy">
+    <span class="selo">{{ produto().selo }}</span>
+  </div>
+
+  <div class="info">
+    <h3>{{ produto().nome }}</h3>
+    <p class="tipo">{{ produto().tipo }}</p>
+    <p class="descricao">{{ produto().descricaoCurta }}</p>
+    <p class="preco">{{ produto().preco | currency: 'BRL' }}</p>
+
+    <div class="botoes">
+      <button type="button" class="btn btn-secundario" (click)="verDetalhes.emit(produto())">
+        Detalhes
+      </button>
+      <button type="button" class="btn btn-primario" (click)="adicionarAoCarrinho()">
+        Adicionar
+      </button>
+    </div>
+
+    <!-- Mostra quantos desse perfume já estão no carrinho -->
+    @if (carrinho.quantidadeDoProduto(produto()) > 0) {
+    <p class="no-carrinho">✔ {{ carrinho.quantidadeDoProduto(produto()) }} no carrinho</p>
+    }
+  </div>
+</div>

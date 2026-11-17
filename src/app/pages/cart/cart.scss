@@ -1,0 +1,205 @@
+.pagina-carrinho {
+  padding-top: 40px;
+  padding-bottom: 70px;
+}
+
+/* ---------- Carrinho vazio ---------- */
+.vazio {
+  margin-top: 30px;
+  padding: 50px 20px;
+  border: 2px dashed var(--borda);
+  border-radius: var(--raio);
+  text-align: center;
+
+  app-icon {
+    color: var(--rosa);
+  }
+
+  h2 {
+    margin: 12px 0 6px;
+    color: var(--roxo);
+  }
+
+  p {
+    margin-bottom: 20px;
+    color: var(--texto-claro);
+  }
+}
+
+/* ---------- Tabela + resumo ---------- */
+.conteudo {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  align-items: start;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    padding: 12px 8px;
+    border-bottom: 2px solid var(--borda);
+    font-size: 14px;
+    text-align: left;
+    color: var(--roxo);
+  }
+
+  td {
+    padding: 14px 8px;
+    border-bottom: 1px solid var(--borda);
+  }
+}
+
+.produto {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  img {
+    width: 70px;
+    height: 70px;
+    border-radius: var(--raio);
+    object-fit: cover;
+  }
+
+  strong,
+  small {
+    display: block;
+  }
+
+  small {
+    color: var(--texto-claro);
+  }
+}
+
+.quantidade {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+
+  button {
+    width: 32px;
+    height: 34px;
+    border: none;
+    background: none;
+    font-size: 18px;
+    color: var(--magenta);
+  }
+
+  span {
+    min-width: 22px;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+.subtotal {
+  font-weight: 700;
+  color: var(--magenta);
+}
+
+.remover {
+  display: flex;
+  padding: 6px;
+  border: none;
+  border-radius: var(--raio);
+  background: none;
+  color: var(--texto-claro);
+
+  &:hover {
+    background: #fdecf0;
+    color: var(--erro);
+  }
+}
+
+.resumo {
+  padding: 24px;
+  border-radius: var(--raio);
+  background: var(--rosa-claro);
+
+  h2 {
+    margin-bottom: 16px;
+    font-size: 20px;
+    color: var(--magenta);
+  }
+
+  .btn {
+    width: 100%;
+    margin-top: 16px;
+  }
+}
+
+.linha {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+.total {
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--borda);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--magenta);
+}
+
+.gratis {
+  font-weight: 600;
+  color: var(--sucesso);
+}
+
+.aviso-frete {
+  margin: 6px 0;
+  font-size: 13px;
+  color: var(--texto-claro);
+}
+
+.continuar {
+  display: block;
+  margin-top: 14px;
+  font-size: 14px;
+  text-align: center;
+  color: var(--magenta);
+}
+
+/* ---------- Tablet / celular ---------- */
+@media (max-width: 900px) {
+  .conteudo {
+    grid-template-columns: 1fr;
+  }
+}
+
+// No celular a tabela vira uma lista de "cards"
+@media (max-width: 600px) {
+  .tabela {
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: block;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--borda);
+    }
+
+    td {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 0;
+      border: none;
+    }
+
+    // Mostra o nome da coluna antes do valor
+    td[data-label]::before {
+      content: attr(data-label);
+      font-size: 14px;
+      color: var(--texto-claro);
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.banner {
+  display: flex;
+  align-items: center;
+  min-height: 520px;
+  padding: 60px 0;
+  background: #fbf2f3 url("/images/hero.jpg") right center / cover no-repeat;
+}
+
+.conteudo {
+  max-width: 520px;
+}
+
+h1 {
+  margin: 12px 0 16px;
+  font-size: 56px;
+  line-height: 1.1;
+  color: var(--magenta);
+
+  span {
+    display: block;
+    color: var(--rosa);
+  }
+}
+
+.texto {
+  margin-bottom: 28px;
+  font-size: 18px;
+}
+
+/* ---------- Celular ---------- */
+@media (max-width: 800px) {
+  .banner {
+    min-height: auto;
+    padding: 40px 0 300px;
+    background-position: 75% bottom;
+    background-size: auto 300px;
+  }
+
+  h1 {
+    font-size: 38px;
+  }
+}

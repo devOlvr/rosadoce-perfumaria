@@ -1,0 +1,32 @@
+.sobre {
+  padding: 70px 0;
+  background: var(--rosa-claro);
+}
+
+.conteudo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 50px;
+
+  img {
+    width: 100%;
+    border-radius: var(--raio);
+  }
+
+  .titulo-secao {
+    margin: 8px 0 16px;
+  }
+}
+
+.lema {
+  margin-top: 20px;
+  font-weight: 600;
+  color: var(--magenta);
+}
+
+@media (max-width: 800px) {
+  .conteudo {
+    grid-template-columns: 1fr;
+  }
+}

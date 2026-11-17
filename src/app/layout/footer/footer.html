@@ -1,0 +1,31 @@
+<footer id="contato" class="rodape">
+  <div class="container colunas">
+    <div>
+      <app-logo />
+      <p class="frase">Fragrâncias que encantam. Essências que marcam.</p>
+    </div>
+
+    <div>
+      <h3>Navegação</h3>
+      <a routerLink="/" fragment="inicio">Início</a>
+      <a routerLink="/" fragment="colecao">Coleção</a>
+      <a routerLink="/carrinho">Carrinho</a>
+      <a routerLink="/login">Minha conta</a>
+    </div>
+
+    <div>
+      <h3>Contato</h3>
+      <!-- TODO: trocar pelos perfis reais da loja -->
+      <a href="https://instagram.com/" target="_blank" rel="noopener">
+        <app-icon name="instagram" />
+        Instagram
+      </a>
+      <a href="https://wa.me/" target="_blank" rel="noopener">
+        <app-icon name="whatsapp" />
+        WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <p class="copyright">© {{ ano }} Rosa Doce Perfumaria. Todos os direitos reservados.</p>
+</footer>
